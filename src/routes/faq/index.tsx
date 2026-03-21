@@ -9,6 +9,7 @@ import {
   Plus,
   CreditCard,
 } from "lucide-react"
+import { APP_NAME } from "@/constants"
 
 export const Route = createFileRoute("/faq/")({
   component: FAQPage,
@@ -27,7 +28,7 @@ function FAQPage() {
             Frequently Asked <br className="hidden md:block" /> Questions
           </h1>
           <p className="max-w-2xl text-lg font-medium text-muted-foreground">
-            Everything you need to know about Project Lisa's systems, creative
+            Everything you need to know about {APP_NAME}'s systems, creative
             services, and 24/7 technical support.
           </p>
         </header>

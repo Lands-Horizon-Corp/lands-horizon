@@ -1,3 +1,4 @@
+import { APP_NAME, PUBLIC_URL } from "@/constants"
 import { createFileRoute, Link } from "@tanstack/react-router"
 import {
   ArrowLeft,
@@ -21,7 +22,7 @@ function CookiePolicy() {
         <header className="mb-12 border-b border-border pb-8">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-black tracking-widest text-primary uppercase">
             <Cookie className="h-3 w-3" />
-            Project Lisa Legal
+            {APP_NAME} Legal
           </div>
           <h1 className="mb-4 text-3xl font-black tracking-tight uppercase md:text-5xl">
             Cookie Policy
@@ -39,7 +40,7 @@ function CookiePolicy() {
               01. Our Commitment
             </h2>
             <p className="text-muted-foreground">
-              At <strong>Project Lisa</strong>, we are dedicated to maximizing
+              At <strong>{APP_NAME}</strong>, we are dedicated to maximizing
               reach and multiplying impact. To provide our 100,000+ users and
               local partners with exactly what they need, we use cookies to
               ensure our systems and creative solutions function seamlessly.
@@ -54,10 +55,8 @@ function CookiePolicy() {
             </h2>
             <p className="text-muted-foreground">
               Our official site (
-              <span className="font-medium text-primary">
-                project-lisa.cloud
-              </span>
-              ) uses cookies to:
+              <span className="font-medium text-primary">{PUBLIC_URL}</span>)
+              uses cookies to:
             </p>
             <ul className="grid gap-4 text-sm md:grid-cols-3">
               {[
@@ -171,7 +170,7 @@ function CookiePolicy() {
         <footer className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-10 md:flex-row">
           <div className="space-y-2 text-center md:text-left">
             <p className="text-[10px] font-black tracking-[0.2em] text-primary/40 uppercase">
-              Project Lisa © 2026 | Philippines
+              {APP_NAME} © 2026 | Philippines
             </p>
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] font-bold text-muted-foreground/60 uppercase md:justify-start">
               <span>Zalven (CEO)</span>

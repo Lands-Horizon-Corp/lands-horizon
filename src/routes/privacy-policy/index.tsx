@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/constants"
 import { createFileRoute, Link } from "@tanstack/react-router"
 import { ArrowLeft, Shield, Cookie, FileText, HelpCircle } from "lucide-react"
 
@@ -13,7 +14,7 @@ function PrivacyPolicy() {
         <header className="mb-12 border-b border-border pb-8">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary/10 px-3 py-1 text-[10px] font-black tracking-widest text-secondary uppercase">
             <Shield className="h-3 w-3" />
-            Project Lisa Data Protection
+            {APP_NAME} Data Protection
           </div>
           <h1 className="mb-4 text-3xl font-black tracking-tight uppercase md:text-5xl">
             Privacy Policy
@@ -31,7 +32,7 @@ function PrivacyPolicy() {
               01. Our Privacy Mission
             </h2>
             <p className="text-muted-foreground">
-              At <strong>Project Lisa</strong>, our mission is to provide local
+              At <strong>{APP_NAME}</strong>, our mission is to provide local
               clients with exactly what they need through thoughtfully built
               systems. We ensure that your data, and the data of your 100,000+
               users, remains secure, private, and under your control.
@@ -177,7 +178,7 @@ function PrivacyPolicy() {
         {/* Footer Navigation */}
         <footer className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-10 md:flex-row">
           <p className="text-center text-[10px] font-black tracking-[0.3em] text-muted-foreground/40 uppercase md:text-left">
-            Project Lisa © 2026 | Philippines
+            {APP_NAME} © 2026 | Philippines
           </p>
           <button
             onClick={() => window.history.back()}

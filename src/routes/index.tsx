@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router"
 import Home from "@/components/home/page"
-import { APP_NAME } from "@/constants"
+import { APP_NAME, PUBLIC_URL } from "@/constants"
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `Project Lisa | ${APP_NAME}` },
+      { title: `${APP_NAME}` },
       {
         name: "description",
         content:
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Project Lisa — Engineering & Creative Multimedia",
+        content: `${APP_NAME} — Engineering & Creative Multimedia`,
       },
       {
         property: "og:description",
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
           "From robust backend systems to high-end Photoshop compositions and cinematic production. We build exactly what you need to scale.",
       },
       { property: "og:image", content: "/og-image.png" },
-      { property: "og:url", content: "https://project-lisa.cloud" },
+      { property: "og:url", content: PUBLIC_URL },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {

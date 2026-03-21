@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/constants"
 import { createFileRoute, Link } from "@tanstack/react-router"
 import { Check, ArrowLeft, Shield, Cookie, HelpCircle } from "lucide-react"
 
@@ -12,7 +13,7 @@ function ServiceTerms() {
         {/* Header Section */}
         <header className="mb-12 border-b border-border pb-8">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-black tracking-widest text-primary uppercase">
-            Project Lisa Service Agreement
+            {APP_NAME} Service Agreement
           </div>
           <h1 className="mb-4 text-3xl leading-tight font-black tracking-tight uppercase md:text-5xl">
             Service Terms & <br />
@@ -31,7 +32,7 @@ function ServiceTerms() {
               01. Scope of Digital Solutions
             </h2>
             <p className="mb-6 text-muted-foreground">
-              Project Lisa provides thoughtfully built systems designed to
+              {APP_NAME} provides thoughtfully built systems designed to
               maximize reach and multiply impact. Our service ecosystem
               includes:
             </p>

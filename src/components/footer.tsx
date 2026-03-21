@@ -1,4 +1,4 @@
-import { APP_NAME, LOGO } from "@/constants"
+import { APP_NAME, EMAIL, LOGO } from "@/constants"
 
 export function Footer() {
   return (
@@ -131,7 +131,7 @@ export function Footer() {
             </p>
           </div>
           <a
-            href="mailto:hello@projectlisa.com"
+            href={`mailto:${EMAIL}`}
             className="inline-flex rounded-xl bg-accent px-8 py-4 font-bold text-accent-foreground transition-transform hover:scale-105"
           >
             Get In Touch
