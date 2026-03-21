@@ -12,7 +12,7 @@ ENV VITE_LOGO=$VITE_LOGO
 
 # Copy lock file and package.json
 # Note: Check if yours is bun.lockb or bun.lock (usually .lockb)
-COPY bun.lockb package.json ./
+COPY bun.lock package.json ./
 
 # Install dependencies
 RUN bun install --frozen-lockfile
