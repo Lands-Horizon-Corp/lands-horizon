@@ -179,7 +179,7 @@ export default function Home() {
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
               Built with Trust
             </div>
-            <h1 className="font-headline text-4xl leading-[1.1] font-extrabold tracking-tighter text-secondary sm:text-6xl md:text-[90px] md:leading-[0.9] lg:text-[110px]">
+            <h1 className="animate-blur-shake font-headline text-4xl leading-[1.1] font-extrabold tracking-tighter text-secondary sm:text-6xl md:text-[90px] md:leading-[0.9] lg:text-[110px]">
               Maximizing <span className="font-light italic">Reach.</span>
               <br />
               <span className="text-gradient-gold">Multiplying Impact.</span>
