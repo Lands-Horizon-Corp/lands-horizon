@@ -424,7 +424,7 @@ export default function Home() {
               <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-primary/40 md:col-span-5 md:p-10">
                 <img
                   src="multimedia.jpg"
-                  className="absolute top-0 left-0 -z-10 mask-[linear-gradient(to_top_right,black,transparent)] opacity-20"
+                  className="absolute top-0 left-0 -z-10 h-full w-full mask-[linear-gradient(to_top_right,black,transparent)] object-cover object-top opacity-20"
                 />
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="mb-8 flex items-start justify-between md:mb-12">
