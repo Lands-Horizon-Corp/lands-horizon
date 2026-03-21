@@ -697,7 +697,7 @@ export default function Home() {
                       Legal Name
                     </label>
                     <input
-                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
+                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                       placeholder="John Doe"
                       type="text"
                     />
