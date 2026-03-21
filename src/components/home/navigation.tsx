@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import { APP_NAME } from "@/constants"
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -13,7 +14,7 @@ export function Navigation() {
             L
           </div>
           <span className="headline text-lg font-extrabold tracking-tighter text-secondary md:text-xl">
-            Project Lisa
+            {APP_NAME}
           </span>
         </div>
 

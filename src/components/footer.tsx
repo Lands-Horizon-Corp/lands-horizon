@@ -1,3 +1,5 @@
+import { APP_NAME } from "@/constants"
+
 export function Footer() {
   return (
     <footer
@@ -13,7 +15,7 @@ export function Footer() {
                 L
               </div>
               <span className="headline text-lg font-extrabold text-secondary">
-                Project Lisa
+                {APP_NAME}
               </span>
             </div>
             <p className="text-on-surface-variant/80 body text-sm">
@@ -140,7 +142,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-outline-variant/10 text-on-surface-variant/60 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm md:flex-row">
-          <p>© 2024 Project Lisa. All rights reserved.</p>
+          <p>© 2024 {APP_NAME}. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="transition-colors hover:text-accent">
               Twitter

@@ -17,6 +17,7 @@ import {
   Star,
   CameraIcon,
 } from "lucide-react"
+import { APP_NAME } from "@/constants"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,7 +35,7 @@ export default function Home() {
               L
             </div>
             <span className="font-headline text-lg font-extrabold tracking-tighter text-secondary md:text-xl">
-              Project Lisa
+              {APP_NAME}
             </span>
           </div>
           <div className="hidden items-center gap-8 md:flex lg:gap-12">
@@ -529,7 +530,7 @@ export default function Home() {
                 <span className="bg-outline-variant/30 h-px w-6 md:w-8"></span>
               </div>
               <h2 className="font-headline text-3xl font-extrabold tracking-tighter text-secondary md:text-6xl">
-                Why Project Lisa?
+                Why {APP_NAME}?
               </h2>
             </div>
             <div className="border-outline-variant/10 bg-surface-container-low grid grid-cols-1 gap-0 overflow-hidden rounded-3xl border shadow-xl md:grid-cols-3 md:rounded-[2.5rem]">
@@ -751,7 +752,7 @@ export default function Home() {
                     L
                   </div>
                   <span className="text-xl font-black tracking-tighter text-secondary uppercase md:text-2xl">
-                    Project Lisa
+                    {APP_NAME}
                   </span>
                 </div>
                 <p className="text-on-surface-variant/60 max-w-sm text-sm leading-relaxed font-light md:text-base">
@@ -896,7 +897,7 @@ export default function Home() {
             {/* Bottom Copyright */}
             <div className="border-outline-variant/10 flex flex-col items-center justify-between gap-6 border-t pt-8 text-center md:flex-row md:pt-12 md:text-left">
               <p className="text-on-surface-variant/50 text-[11px] font-medium tracking-widest uppercase md:text-xs">
-                © 2024 Project Lisa. All rights reserved.
+                © 2024 {APP_NAME}. All rights reserved.
               </p>
               <p className="text-on-surface-variant/50 text-[11px] font-medium md:text-xs">
                 Crafted with precision for the elite.

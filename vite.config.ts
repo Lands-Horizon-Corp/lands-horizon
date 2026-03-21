@@ -8,7 +8,7 @@ import { nitro } from "nitro/vite"
 
 export default defineConfig({
   plugins: [
-    devtools(), // Must be FIRST
+    devtools(),
     tanstackStart(), // Recommended before React
     viteReact(),
     tailwindcss(),
