@@ -2,32 +2,32 @@
 FROM oven/bun:latest AS builder
 WORKDIR /app
 
-# Copy lock file and package.json
-COPY bun.lock package.json ./
-
-# Install dependencies
+# 1. Copy the lockfile and package.json
+COPY bun.lockb package.json ./
 RUN bun install --frozen-lockfile
 
-# Copy full source code
+# 2. Copy the .env file BEFORE building
+# Make sure .env is in your local root directory
+COPY .env .env
+
+# 3. Copy the rest of the code
 COPY . .
 
-# Build the project (TanStack Start outputs to .output)
+# 4. Vite will now see the .env file during the build
 RUN bun run build
 
 # ---------- Production stage ----------
-# Using the official slim image for a smaller footprint
 FROM oven/bun:distroless AS production
 WORKDIR /app
 
-# Copy the entire .output directory (contains both server and public assets)
 COPY --from=builder /app/.output ./.output
 
-# TanStack Start / Nitro defaults
+# Copy the .env to the production stage as well if 
+# your server (Nitro) needs it at runtime
+COPY --from=builder /app/.env ./.env
+
 ENV NODE_ENV=production
 ENV PORT=3000
 
-# Expose the port
 EXPOSE 3000
-
-# Run the Nitro server using Bun
 CMD ["./.output/server/index.mjs"]
