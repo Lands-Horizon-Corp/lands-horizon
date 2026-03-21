@@ -55,7 +55,7 @@ export function HeroSection() {
               View Ecosystem
               <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </span>
-            <div className="absolute inset-0 bg-white/10 opacity-0 transition-opacity group-hover:opacity-100" />
+            <div className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100" />
           </a>
           <a
             href="#mission-vision"

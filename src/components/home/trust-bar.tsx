@@ -13,7 +13,7 @@ export function TrustBar() {
             </span>
           </div>
 
-          <div className="bg-outline-variant/20 hidden h-12 w-[1px] justify-self-center md:block" />
+          <div className="bg-outline-variant/20 hidden h-12 w-px justify-self-center md:block" />
 
           {/* Strategic Partners */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
@@ -25,7 +25,7 @@ export function TrustBar() {
             </span>
           </div>
 
-          <div className="bg-outline-variant/20 hidden h-12 w-[1px] justify-self-center md:block" />
+          <div className="bg-outline-variant/20 hidden h-12 w-px justify-self-center md:block" />
 
           {/* System Reliability */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
@@ -37,7 +37,7 @@ export function TrustBar() {
             </span>
           </div>
 
-          <div className="bg-outline-variant/20 hidden h-12 w-[1px] justify-self-center md:block" />
+          <div className="bg-outline-variant/20 hidden h-12 w-px justify-self-center md:block" />
 
           {/* Concierge */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
