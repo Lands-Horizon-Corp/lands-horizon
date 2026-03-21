@@ -138,7 +138,7 @@ export default function Home() {
         <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20 md:px-6">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,20,82,0.15)_0%,transparent_70%)]"></div>
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-[0.08] mix-blend-luminosity"></div>
+            <div className="absolute inset-0 bg-[url('/anime.jpg')] bg-cover bg-center opacity-[0.08] mix-blend-luminosity"></div>
 
             {/* Animated Grid Background */}
             <div className="absolute inset-0">
