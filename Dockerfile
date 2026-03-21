@@ -2,32 +2,45 @@
 FROM oven/bun:latest AS builder
 WORKDIR /app
 
-# 1. Copy the lockfile and package.json
-COPY bun.lock package.json ./
+# 1. TELL DOCKER TO EXPECT THESE FROM RAILWAY
+ARG VITE_APP_NAME
+ARG VITE_LOGO
+
+# 2. MAKE THEM ACCESSIBLE TO VITE/BUN DURING "RUN"
+ENV VITE_APP_NAME=$VITE_APP_NAME
+ENV VITE_LOGO=$VITE_LOGO
+
+# Copy lock file and package.json
+# Note: Check if yours is bun.lockb or bun.lock (usually .lockb)
+COPY bun.lockb package.json ./
+
+# Install dependencies
 RUN bun install --frozen-lockfile
 
-# 2. Copy the .env file BEFORE building
-# Make sure .env is in your local root directory
-COPY .env .env
-
-# 3. Copy the rest of the code
+# Copy full source code
 COPY . .
 
-# 4. Vite will now see the .env file during the build
+# 3. BUILD THE PROJECT
+# Vite will now see VITE_APP_NAME and VITE_LOGO and bake them into the JS
 RUN bun run build
 
 # ---------- Production stage ----------
 FROM oven/bun:distroless AS production
 WORKDIR /app
 
+# Copy the entire .output directory
 COPY --from=builder /app/.output ./.output
 
-# Copy the .env to the production stage as well if 
-# your server (Nitro) needs it at runtime
-COPY --from=builder /app/.env ./.env
+# Pass the vars to the production stage as well
+ARG VITE_APP_NAME
+ARG VITE_LOGO
+ENV VITE_APP_NAME=$VITE_APP_NAME
+ENV VITE_LOGO=$VITE_LOGO
 
 ENV NODE_ENV=production
 ENV PORT=3000
 
 EXPOSE 3000
+
+# Start the Nitro server
 CMD ["./.output/server/index.mjs"]
