@@ -31,9 +31,5 @@ export const Route = createFileRoute("/")({
 })
 
 function App() {
-  return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Home />
-    </ThemeProvider>
-  )
+  return <Home />
 }

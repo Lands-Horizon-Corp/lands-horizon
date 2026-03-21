@@ -868,15 +868,15 @@ export default function Home() {
                     <li>
                       <a
                         className="text-on-surface-variant/60 transition-colors hover:text-secondary"
-                        href="#"
+                        href="/privacy-policy"
                       >
-                        Privacy Protocol
+                        Privacy Policy
                       </a>
                     </li>
                     <li>
                       <a
                         className="text-on-surface-variant/60 transition-colors hover:text-secondary"
-                        href="#"
+                        href="/service-terms"
                       >
                         Service Terms
                       </a>
@@ -884,9 +884,17 @@ export default function Home() {
                     <li>
                       <a
                         className="text-on-surface-variant/60 transition-colors hover:text-secondary"
-                        href="#"
+                        href="/cookie-policy"
                       >
                         Cookie Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        href="/faq"
+                      >
+                        FAQ
                       </a>
                     </li>
                   </ul>

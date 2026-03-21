@@ -4,6 +4,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools"
 
 import appCss from "../styles.css?url"
 import { APP_NAME, LOGO } from "@/constants"
+import { ThemeProvider } from "next-themes" // Using next-themes
 
 export const Route = createRootRoute({
   head: () => ({
@@ -24,7 +25,6 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
-
       {
         rel: "icon",
         type: "image/x-icon",
@@ -37,24 +37,31 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
-        {children}
-        <TanStackDevtools
-          config={{
-            position: "bottom-right",
-          }}
-          plugins={[
-            {
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
-        <Scripts />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <TanStackDevtools
+            config={{
+              position: "bottom-right",
+            }}
+            plugins={[
+              {
+                name: "Tanstack Router",
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+            ]}
+          />
+          <Scripts />
+        </ThemeProvider>
       </body>
     </html>
   )

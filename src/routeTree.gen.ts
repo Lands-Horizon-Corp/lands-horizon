@@ -10,33 +10,84 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiceTermsIndexRouteImport } from './routes/service-terms/index'
+import { Route as PrivacyPolicyIndexRouteImport } from './routes/privacy-policy/index'
+import { Route as FaqIndexRouteImport } from './routes/faq/index'
+import { Route as CookiePolicyIndexRouteImport } from './routes/cookie-policy/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiceTermsIndexRoute = ServiceTermsIndexRouteImport.update({
+  id: '/service-terms/',
+  path: '/service-terms/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyIndexRoute = PrivacyPolicyIndexRouteImport.update({
+  id: '/privacy-policy/',
+  path: '/privacy-policy/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqIndexRoute = FaqIndexRouteImport.update({
+  id: '/faq/',
+  path: '/faq/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyIndexRoute = CookiePolicyIndexRouteImport.update({
+  id: '/cookie-policy/',
+  path: '/cookie-policy/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cookie-policy/': typeof CookiePolicyIndexRoute
+  '/faq/': typeof FaqIndexRoute
+  '/privacy-policy/': typeof PrivacyPolicyIndexRoute
+  '/service-terms/': typeof ServiceTermsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cookie-policy': typeof CookiePolicyIndexRoute
+  '/faq': typeof FaqIndexRoute
+  '/privacy-policy': typeof PrivacyPolicyIndexRoute
+  '/service-terms': typeof ServiceTermsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cookie-policy/': typeof CookiePolicyIndexRoute
+  '/faq/': typeof FaqIndexRoute
+  '/privacy-policy/': typeof PrivacyPolicyIndexRoute
+  '/service-terms/': typeof ServiceTermsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cookie-policy/'
+    | '/faq/'
+    | '/privacy-policy/'
+    | '/service-terms/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/cookie-policy' | '/faq' | '/privacy-policy' | '/service-terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/cookie-policy/'
+    | '/faq/'
+    | '/privacy-policy/'
+    | '/service-terms/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CookiePolicyIndexRoute: typeof CookiePolicyIndexRoute
+  FaqIndexRoute: typeof FaqIndexRoute
+  PrivacyPolicyIndexRoute: typeof PrivacyPolicyIndexRoute
+  ServiceTermsIndexRoute: typeof ServiceTermsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +99,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/service-terms/': {
+      id: '/service-terms/'
+      path: '/service-terms'
+      fullPath: '/service-terms/'
+      preLoaderRoute: typeof ServiceTermsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy/': {
+      id: '/privacy-policy/'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy/'
+      preLoaderRoute: typeof PrivacyPolicyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq/': {
+      id: '/faq/'
+      path: '/faq'
+      fullPath: '/faq/'
+      preLoaderRoute: typeof FaqIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy/': {
+      id: '/cookie-policy/'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy/'
+      preLoaderRoute: typeof CookiePolicyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CookiePolicyIndexRoute: CookiePolicyIndexRoute,
+  FaqIndexRoute: FaqIndexRoute,
+  PrivacyPolicyIndexRoute: PrivacyPolicyIndexRoute,
+  ServiceTermsIndexRoute: ServiceTermsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
