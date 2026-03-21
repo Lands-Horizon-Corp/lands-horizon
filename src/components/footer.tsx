@@ -11,9 +11,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded bg-accent font-black text-accent-foreground">
-                L
-              </div>
+              <img src="/logo.webp" />
               <span className="headline text-lg font-extrabold text-secondary">
                 {APP_NAME}
               </span>
