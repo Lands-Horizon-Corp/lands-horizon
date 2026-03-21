@@ -9,7 +9,7 @@ import {
   Plus,
   CreditCard,
 } from "lucide-react"
-import { APP_NAME } from "@/constants"
+import { APP_NAME, EMAIL } from "@/constants"
 
 export const Route = createFileRoute("/faq/")({
   component: FAQPage,
@@ -173,7 +173,7 @@ function FAQPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="mailto:lisafreelance007@gmail.com"
+              href={`mailto:${EMAIL}`}
               className="rounded-full bg-background px-8 py-3 text-[10px] font-black tracking-widest text-foreground uppercase transition-transform hover:scale-105"
             >
               Email Support

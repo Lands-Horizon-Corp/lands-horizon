@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/constants"
+import { APP_NAME, EMAIL, SOCIAL_ACCOUNT } from "@/constants"
 import { createFileRoute, Link } from "@tanstack/react-router"
 import { ArrowLeft, Shield, Cookie, FileText, HelpCircle } from "lucide-react"
 
@@ -125,9 +125,9 @@ function PrivacyPolicy() {
               For any privacy-related concerns, please reach out via:
             </p>
             <div className="flex flex-col gap-2 text-sm font-black tracking-tight text-foreground uppercase">
-              <span>EMAIL: lisafreelance007@gmail.com</span>
+              <span>EMAIL: {EMAIL}</span>
               <span className="text-secondary italic">
-                SOCIAL: @lisatechsupp
+                SOCIAL: {SOCIAL_ACCOUNT}
               </span>
             </div>
           </div>

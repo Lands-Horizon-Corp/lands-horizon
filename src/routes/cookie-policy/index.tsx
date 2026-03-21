@@ -1,4 +1,4 @@
-import { APP_NAME, PUBLIC_URL } from "@/constants"
+import { APP_NAME, EMAIL, PUBLIC_URL } from "@/constants"
 import { createFileRoute, Link } from "@tanstack/react-router"
 import {
   ArrowLeft,
@@ -105,11 +105,11 @@ function CookiePolicy() {
                   Direct Email
                 </span>
                 <a
-                  href="mailto:lisafreelance007@gmail.com"
+                  href={`mailto:${EMAIL}`}
                   className="flex items-center gap-2 font-medium transition-opacity hover:opacity-70"
                 >
                   <Mail className="h-4 w-4" />
-                  lisafreelance007@gmail.com
+                  {EMAIL}
                 </a>
               </div>
               <div className="flex flex-col gap-1">

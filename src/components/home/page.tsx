@@ -17,7 +17,7 @@ import {
   Star,
   CameraIcon,
 } from "lucide-react"
-import { APP_NAME, LOGO } from "@/constants"
+import { APP_NAME, EMAIL, LOGO } from "@/constants"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -667,7 +667,7 @@ export default function Home() {
                       Email Our Atelier
                     </span>
                     <span className="text-sm font-medium break-all text-secondary md:text-base">
-                      lisafreelance007@gmail.com
+                      {EMAIL}
                     </span>
                   </div>
                 </div>
