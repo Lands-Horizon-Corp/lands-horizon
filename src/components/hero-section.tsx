@@ -6,7 +6,7 @@ export function HeroSection() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,20,82,0.15)_0%,transparent_70%)]" />
-        <div className="absolute bottom-0 left-0 h-64 w-full bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 h-64 w-full bg-linear-to-t from-background to-transparent" />
       </div>
 
       {/* Content */}
@@ -25,7 +25,7 @@ export function HeroSection() {
         </h1>
 
         {/* Decorative line */}
-        <div className="relative mx-auto h-4 w-full max-w-[200px] overflow-hidden md:h-6 md:max-w-md">
+        <div className="relative mx-auto h-4 w-full max-w-50 overflow-hidden md:h-6 md:max-w-md">
           <svg
             className="text-outline-variant/40 h-full w-full"
             viewBox="0 0 400 20"
