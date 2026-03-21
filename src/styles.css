@@ -17,7 +17,7 @@
   --card-foreground: #e5e2e1;
   --popover: #141414;
   --popover-foreground: #e5e2e1;
-  --primary: #d7baff;
+  --primary: #a96cff;
   --primary-foreground: #3c2360;
   --secondary: #ffffff;
   --secondary-foreground: #0a0a0a;
@@ -129,7 +129,7 @@
 
 @layer utilities {
   .text-gradient-gold {
-    @apply bg-gradient-to-br from-[var(--tertiary-fixed)] to-[var(--tertiary)] bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-[var(--primary-fixed)] to-[var(--primary)] bg-clip-text text-transparent;
   }
   
   .glass-header {
@@ -155,7 +155,7 @@
   }
   
   .golden-stitch {
-    @apply stroke-[var(--tertiary)] opacity-40;
+    @apply stroke-[var(--primary)] opacity-40;
     stroke-dasharray: 4, 2;
     filter: drop-shadow(0 0 2px rgba(233, 196, 0, 0.4));
   }

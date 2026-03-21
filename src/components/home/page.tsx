@@ -30,7 +30,7 @@ export default function Home() {
       <nav className="glass-header border-outline-variant/10 fixed top-0 z-100 w-full border-b">
         <div className="relative z-20 mx-auto flex max-w-360 items-center justify-between px-4 py-4 md:px-12 md:py-5">
           <div className="group flex cursor-pointer items-center gap-2">
-            <div className="text-on-accent flex h-8 w-8 transform items-center justify-center rounded bg-accent font-black transition-transform group-hover:rotate-12">
+            <div className="text-on-primary flex h-8 w-8 transform items-center justify-center rounded bg-primary font-black transition-transform group-hover:rotate-12">
               L
             </div>
             <span className="font-headline text-lg font-extrabold tracking-tighter text-secondary md:text-xl">
@@ -39,33 +39,27 @@ export default function Home() {
           </div>
           <div className="hidden items-center gap-8 md:flex lg:gap-12">
             <a
-              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-accent"
+              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-primary"
               href="#mission-vision"
             >
               Mission
             </a>
             <a
-              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-accent"
+              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-primary"
               href="#why-us"
             >
               Why Us
             </a>
             <a
-              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-accent"
+              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-primary"
               href="#services"
             >
               Services
             </a>
-            <a
-              className="text-on-surface-variant/80 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-accent"
-              href="#contact"
-            >
-              Contact
-            </a>
           </div>
           <div className="flex items-center gap-4 md:gap-6">
             <a
-              className="bg-surface-container-highest border-outline-variant/30 hidden rounded-lg border px-4 py-2.5 text-[10px] font-black tracking-widest text-secondary uppercase transition-all duration-300 hover:border-accent/60 sm:inline-flex md:px-6"
+              className="bg-surface-container-highest border-outline-variant/30 hidden rounded-lg border px-4 py-2.5 text-[10px] font-black tracking-widest text-secondary uppercase transition-all duration-300 hover:border-primary/60 sm:inline-flex md:px-6"
               href="#contact"
             >
               Work With Us
@@ -111,7 +105,7 @@ export default function Home() {
                   key={i}
                   href={item.href}
                   onClick={toggleMenu}
-                  className="group border-outline-variant/10 bg-surface-container/60 hover:bg-surface-container flex items-center justify-between rounded-xl border px-5 py-4 text-base font-bold text-secondary transition-all duration-300 hover:scale-[1.02] hover:border-accent/40 active:scale-[0.98]"
+                  className="group border-outline-variant/10 bg-surface-container/60 hover:bg-surface-container flex items-center justify-between rounded-xl border px-5 py-4 text-base font-bold text-secondary transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 active:scale-[0.98]"
                 >
                   <span>{item.label}</span>
                   <ChevronRight className="opacity-40 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
@@ -124,7 +118,7 @@ export default function Home() {
               <a
                 href="#contact"
                 onClick={toggleMenu}
-                className="text-on-accent block w-full rounded-xl bg-accent py-4 text-center font-black tracking-widest uppercase shadow-lg shadow-accent/20 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="text-on-primary block w-full rounded-xl bg-primary py-4 text-center font-black tracking-widest uppercase shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 Work With Us
               </a>
@@ -137,8 +131,8 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20 md:px-6">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,20,82,0.15)_0%,transparent_70%)]"></div>
             <div className="absolute inset-0 bg-[url('/anime.jpg')] bg-cover bg-center opacity-[0.08] mix-blend-luminosity"></div>
+            <div className="absolute inset-2 bg-[radial-gradient(circle_at_center,rgba(46,20,82,0.15)_0%,transparent_70%)]"></div>
 
             {/* Animated Grid Background */}
             <div className="absolute inset-0">
@@ -156,7 +150,7 @@ export default function Home() {
                     <path
                       d="M 60 0 L 0 0 0 60"
                       fill="none"
-                      stroke="var(--accent)"
+                      stroke="var(--primary)"
                       strokeWidth="0.5"
                     />
                   </pattern>
@@ -181,8 +175,8 @@ export default function Home() {
           </div>
           <div className="relative z-10 max-w-6xl space-y-6 text-center md:space-y-10">
             <div className="bg-primary-container/30 mb-4 inline-flex items-center gap-3 rounded-full border border-primary/20 px-4 py-1.5 text-[8px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"></span>
-              The Multimedia Atelier
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+              Built with Trust
             </div>
             <h1 className="font-headline text-4xl leading-[1.1] font-extrabold tracking-tighter text-secondary sm:text-6xl md:text-[90px] md:leading-[0.9] lg:text-[110px]">
               Maximizing <span className="font-light italic">Reach.</span>
@@ -191,7 +185,7 @@ export default function Home() {
             </h1>
             <div className="relative mx-auto h-4 w-full max-w-50 overflow-hidden md:h-6 md:max-w-md">
               <svg
-                className="h-full w-full text-accent/40"
+                className="h-full w-full text-primary/40"
                 viewBox="0 0 400 20"
               >
                 <path
@@ -210,7 +204,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col justify-center gap-4 px-4 pt-6 sm:flex-row md:gap-6 md:pt-10">
               <a
-                className="group text-on-accent relative overflow-hidden rounded-xl bg-accent px-8 py-4 font-bold tracking-tight transition-all hover:scale-105 active:scale-95 md:px-10 md:py-5"
+                className="group text-on-primary relative overflow-hidden rounded-xl bg-primary px-8 py-4 font-bold tracking-tight transition-all hover:scale-105 active:scale-95 md:px-10 md:py-5"
                 href="#services"
               >
                 <span className="relative z-10 flex items-center justify-center gap-3">
@@ -238,7 +232,7 @@ export default function Home() {
             <div className="border-outline-variant/10 divide-outline-variant/10 flex flex-col items-center justify-between gap-8 divide-y py-10 md:flex-row md:gap-0 md:divide-x md:divide-y-0">
               <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
                 <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  100K<span className="text-accent">+</span>
+                  100K<span className="text-primary">+</span>
                 </span>
                 <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
                   Global Users Served
@@ -246,7 +240,7 @@ export default function Home() {
               </div>
               <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
                 <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  100<span className="text-accent">+</span>
+                  100<span className="text-primary">+</span>
                 </span>
                 <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
                   Strategic Partners
@@ -254,7 +248,7 @@ export default function Home() {
               </div>
               <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
                 <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  99.9<span className="text-accent">%</span>
+                  99.9<span className="text-primary">%</span>
                 </span>
                 <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
                   System Reliability
@@ -262,7 +256,7 @@ export default function Home() {
               </div>
               <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
                 <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  24<span className="text-accent">/</span>7
+                  24<span className="text-primary">/</span>7
                 </span>
                 <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
                   Priority Concierge
@@ -281,8 +275,8 @@ export default function Home() {
             <div className="space-y-10 md:space-y-16 lg:col-span-7">
               <div className="space-y-4 md:space-y-6">
                 <div className="flex items-center gap-4">
-                  <span className="h-px w-8 bg-accent md:w-12"></span>
-                  <span className="text-[10px] font-bold tracking-[0.4em] text-accent uppercase md:text-xs">
+                  <span className="h-px w-8 bg-primary md:w-12"></span>
+                  <span className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase md:text-xs">
                     Our Core Purpose
                   </span>
                 </div>
@@ -295,11 +289,11 @@ export default function Home() {
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10">
                 <div className="group">
                   <div className="mb-6 flex items-center justify-between">
-                    <span className="text-4xl font-black text-accent/20 transition-colors group-hover:text-accent/40">
+                    <span className="text-4xl font-black text-primary/20 transition-colors group-hover:text-primary/40">
                       01
                     </span>
                     <div className="border-outline-variant/20 flex h-10 w-10 items-center justify-center rounded-full border">
-                      <Zap size={18} className="text-accent" />
+                      <Zap size={18} className="text-primary" />
                     </div>
                   </div>
                   <h4 className="mb-3 text-[10px] font-bold tracking-widest text-secondary uppercase md:mb-4 md:text-xs">
@@ -313,11 +307,11 @@ export default function Home() {
                 </div>
                 <div className="group">
                   <div className="mb-6 flex items-center justify-between">
-                    <span className="text-4xl font-black text-accent/20 transition-colors group-hover:text-accent/40">
+                    <span className="text-4xl font-black text-primary/20 transition-colors group-hover:text-primary/40">
                       02
                     </span>
                     <div className="border-outline-variant/20 flex h-10 w-10 items-center justify-center rounded-full border">
-                      <TrendingUp size={18} className="text-accent" />
+                      <TrendingUp size={18} className="text-primary" />
                     </div>
                   </div>
                   <h4 className="mb-3 text-[10px] font-bold tracking-widest text-secondary uppercase md:mb-4 md:text-xs">
@@ -332,16 +326,16 @@ export default function Home() {
               </div>
             </div>
             <div className="group relative lg:col-span-5">
-              <div className="from-primary-container/20 absolute -inset-4 rounded-4xl bg-linear-to-tr to-accent/5 opacity-60 blur-2xl transition-opacity group-hover:opacity-100"></div>
+              <div className="from-primary-container/20 absolute -inset-4 rounded-4xl bg-linear-to-tr to-primary/5 opacity-60 blur-2xl transition-opacity group-hover:opacity-100"></div>
               <div className="border-outline-variant/10 relative aspect-4/5 overflow-hidden rounded-3xl border shadow-2xl md:aspect-4/5">
                 <img
                   src="meeting.jpg"
                   className="absolute top-0 left-0 -z-10 h-full mask-[linear-gradient(to_top_right,black,transparent)] object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent opacity-80"></div>
-                <div className="glass-header absolute right-6 bottom-6 left-6 rounded-2xl border border-accent/20 p-6 md:right-8 md:bottom-8 md:left-8 md:p-8">
+                <div className="glass-header absolute right-6 bottom-6 left-6 rounded-2xl border border-primary/20 p-6 md:right-8 md:bottom-8 md:left-8 md:p-8">
                   <div className="flex flex-col gap-1">
-                    <p className="mb-1 text-[8px] font-black tracking-[0.3em] text-accent uppercase md:text-[10px]">
+                    <p className="mb-1 text-[8px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
                       Impact Record
                     </p>
                     <p className="font-headline text-2xl font-black text-secondary md:text-3xl">
@@ -354,7 +348,7 @@ export default function Home() {
                 </div>
               </div>
               <svg
-                className="absolute -top-4 -right-4 h-16 w-16 text-accent/30 md:-top-6 md:-right-6 md:h-24 md:w-24"
+                className="absolute -top-4 -right-4 h-16 w-16 text-primary/30 md:-top-6 md:-right-6 md:h-24 md:w-24"
                 viewBox="0 0 100 100"
               >
                 <path
@@ -385,13 +379,13 @@ export default function Home() {
                   architecture and cinematic brand representation.
                 </p>
               </div>
-              <div className="flex items-center gap-4 border-b border-accent/30 pb-2 text-[10px] font-bold tracking-[0.4em] text-accent uppercase md:text-xs">
+              <div className="flex items-center gap-4 border-b border-primary/30 pb-2 text-[10px] font-bold tracking-[0.4em] text-primary uppercase md:text-xs">
                 01 // Ecosystem Offerings
               </div>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
               {/* Large Card 1 */}
-              <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-accent/40 md:col-span-7 md:p-10">
+              <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-primary/40 md:col-span-7 md:p-10">
                 <img
                   src="computer.jpg"
                   className="absolute top-0 left-0 -z-10 mask-[linear-gradient(to_top_right,black,transparent)] opacity-20"
@@ -399,7 +393,7 @@ export default function Home() {
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="mb-8 flex items-start justify-between md:mb-12">
                     <div className="bg-primary-container flex h-14 w-14 items-center justify-center rounded-xl border border-primary/20 md:h-16 md:w-16">
-                      <TrendingUp size={28} className="text-accent" />
+                      <TrendingUp size={28} className="text-primary" />
                     </div>
                     <span className="text-on-surface-variant/5 text-4xl font-black md:text-6xl">
                       01
@@ -426,7 +420,7 @@ export default function Home() {
               </div>
 
               {/* Large Card 2 */}
-              <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-accent/40 md:col-span-5 md:p-10">
+              <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-primary/40 md:col-span-5 md:p-10">
                 <img
                   src="multimedia.jpg"
                   className="absolute top-0 left-0 -z-10 mask-[linear-gradient(to_top_right,black,transparent)] opacity-20"
@@ -463,7 +457,7 @@ export default function Home() {
               <div className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container rounded-2xl border p-6 transition-all duration-300 md:col-span-4 md:p-8 md:hover:-translate-y-2">
                 <Search
                   size={32}
-                  className="mb-6 block scale-110 text-accent md:scale-125"
+                  className="mb-6 block scale-110 text-primary md:scale-125"
                 />
                 <h4 className="mb-3 text-lg font-bold text-secondary">
                   SEO &amp; SEM Authority
@@ -476,7 +470,7 @@ export default function Home() {
               <div className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container rounded-2xl border p-6 transition-all duration-300 md:col-span-4 md:p-8 md:hover:-translate-y-2">
                 <Globe
                   size={32}
-                  className="mb-6 block scale-110 text-accent md:scale-125"
+                  className="mb-6 block scale-110 text-primary md:scale-125"
                 />
                 <h4 className="mb-3 text-lg font-bold text-secondary">
                   Omnichannel Strategy
@@ -489,7 +483,7 @@ export default function Home() {
               <div className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container rounded-2xl border p-6 transition-all duration-300 md:col-span-4 md:p-8 md:hover:-translate-y-2">
                 <Zap
                   size={32}
-                  className="mb-6 block scale-110 text-accent md:scale-125"
+                  className="mb-6 block scale-110 text-primary md:scale-125"
                 />
                 <h4 className="mb-3 text-lg font-bold text-secondary">
                   24/7 Concierge Support
@@ -529,7 +523,7 @@ export default function Home() {
             <div className="mb-16 space-y-4 text-center md:mb-24 md:space-y-6">
               <div className="flex items-center justify-center gap-4">
                 <span className="bg-outline-variant/30 h-px w-6 md:w-8"></span>
-                <span className="text-[8px] font-black tracking-[0.5em] text-accent uppercase md:text-[10px]">
+                <span className="text-[8px] font-black tracking-[0.5em] text-primary uppercase md:text-[10px]">
                   The Advantage
                 </span>
                 <span className="bg-outline-variant/30 h-px w-6 md:w-8"></span>
@@ -540,7 +534,7 @@ export default function Home() {
             </div>
             <div className="border-outline-variant/10 bg-surface-container-low grid grid-cols-1 gap-0 overflow-hidden rounded-3xl border shadow-xl md:grid-cols-3 md:rounded-[2.5rem]">
               <div className="border-outline-variant/10 hover:bg-primary-container/10 group border-b p-8 transition-colors md:border-r md:border-b-0 md:p-12">
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-accent/20 text-accent transition-transform group-hover:scale-110 md:mb-10">
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-transform group-hover:scale-110 md:mb-10">
                   <BarChart3 size={24} />
                 </div>
                 <h4 className="mb-4 text-lg leading-tight font-extrabold text-secondary md:text-xl">
@@ -553,7 +547,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="border-outline-variant/10 hover:bg-primary-container/10 group border-b p-8 transition-colors md:border-r md:border-b-0 md:p-12">
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-accent/20 text-accent transition-transform group-hover:scale-110 md:mb-10">
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-transform group-hover:scale-110 md:mb-10">
                   <Code size={24} />
                 </div>
                 <h4 className="mb-4 text-lg leading-tight font-extrabold text-secondary md:text-xl">
@@ -565,7 +559,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="hover:bg-primary-container/10 group p-8 transition-colors md:p-12">
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-accent/20 text-accent transition-transform group-hover:scale-110 md:mb-10">
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-transform group-hover:scale-110 md:mb-10">
                   <RefreshCw size={24} />
                 </div>
                 <h4 className="mb-4 text-lg leading-tight font-extrabold text-secondary md:text-xl">
@@ -588,8 +582,8 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 md:px-8">
             <div className="mb-16 max-w-2xl space-y-4 md:mb-24 md:space-y-6">
               <div className="flex items-center gap-4">
-                <span className="h-px w-10 bg-accent md:w-12"></span>
-                <span className="font-bold tracking-[0.4em] text-accent uppercase md:text-xs">
+                <span className="h-px w-10 bg-primary md:w-12"></span>
+                <span className="font-bold tracking-[0.4em] text-primary uppercase md:text-xs">
                   Client Voices
                 </span>
               </div>
@@ -616,7 +610,7 @@ export default function Home() {
                       <Star
                         key={i}
                         size={16}
-                        className="fill-accent text-accent"
+                        className="fill-primary text-primary"
                       />
                     ))}
                   </div>
@@ -625,7 +619,7 @@ export default function Home() {
                     business grow in digital."
                   </p>
                   <div className="mt-auto flex items-center gap-4">
-                    <div className="bg-surface-variant flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold text-accent md:h-12 md:w-12">
+                    <div className="bg-surface-variant flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold text-primary md:h-12 md:w-12">
                       {testimonial.initials}
                     </div>
                     <div>
@@ -664,11 +658,11 @@ export default function Home() {
               </div>
               <div className="space-y-6 md:space-y-8">
                 <div className="group flex items-center gap-4 md:gap-6">
-                  <div className="group-hover:text-on-accent flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 text-accent transition-all group-hover:bg-accent md:h-12 md:w-12">
+                  <div className="group-hover:text-on-primary flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 text-primary transition-all group-hover:bg-primary md:h-12 md:w-12">
                     <Mail size={20} />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[8px] font-bold tracking-widest text-accent uppercase md:text-[10px]">
+                    <span className="text-[8px] font-bold tracking-widest text-primary uppercase md:text-[10px]">
                       Email Our Atelier
                     </span>
                     <span className="text-sm font-medium break-all text-secondary md:text-base">
@@ -677,11 +671,11 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="group flex items-center gap-4 md:gap-6">
-                  <div className="group-hover:text-on-accent flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 text-accent transition-all group-hover:bg-accent md:h-12 md:w-12">
+                  <div className="group-hover:text-on-primary flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 text-primary transition-all group-hover:bg-primary md:h-12 md:w-12">
                     <Globe size={20} />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[8px] font-bold tracking-widest text-accent uppercase md:text-[10px]">
+                    <span className="text-[8px] font-bold tracking-widest text-primary uppercase md:text-[10px]">
                       Contact + Philippines
                     </span>
                     <span className="text-sm font-medium text-secondary md:text-base">
@@ -702,7 +696,7 @@ export default function Home() {
                       Legal Name
                     </label>
                     <input
-                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border text-secondary transition-all outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 md:px-6 md:py-4"
+                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                       placeholder="John Doe"
                       type="text"
                     />
@@ -712,7 +706,7 @@ export default function Home() {
                       Enterprise Email
                     </label>
                     <input
-                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 md:px-6 md:py-4"
+                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                       placeholder="john@example.com"
                       type="email"
                     />
@@ -723,7 +717,7 @@ export default function Home() {
                     Engagement Subject
                   </label>
                   <input
-                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 md:px-6 md:py-4"
+                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                     placeholder="How can we help?"
                     type="text"
                   />
@@ -733,11 +727,11 @@ export default function Home() {
                     Brief Vision Message
                   </label>
                   <textarea
-                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 h-32 w-full resize-none rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 md:h-40 md:px-6 md:py-4"
+                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 h-32 w-full resize-none rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:h-40 md:px-6 md:py-4"
                     placeholder="Tell us more about your requirements..."
                   ></textarea>
                 </div>
-                <button className="text-on-accent luminous-glow flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 md:py-5">
+                <button className="text-on-primary luminous-glow flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 md:py-5">
                   <span>Send Inquiry</span>
                   <Send size={16} />
                 </button>
@@ -753,7 +747,7 @@ export default function Home() {
               {/* Brand Section */}
               <div className="space-y-6 md:col-span-5 md:space-y-10">
                 <div className="flex items-center gap-2">
-                  <div className="text-on-accent flex h-10 w-10 items-center justify-center rounded bg-accent font-black">
+                  <div className="text-on-primary flex h-10 w-10 items-center justify-center rounded bg-primary font-black">
                     L
                   </div>
                   <span className="text-xl font-black tracking-tighter text-secondary uppercase md:text-2xl">
@@ -766,19 +760,19 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-start gap-4 md:gap-6">
                   <a
-                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:text-accent"
+                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:text-primary"
                     href="#"
                   >
                     <img src="/bir.png" />
                   </a>
                   <a
-                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:text-accent"
+                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:text-primary"
                     href="#"
                   >
                     <img src="/dti.png" />
                   </a>
                   <a
-                    className="flex h-5 w-15 items-center justify-center transition-all duration-300 hover:text-accent"
+                    className="flex h-5 w-15 items-center justify-center transition-all duration-300 hover:text-primary"
                     href="#"
                   >
                     <img src="/sec.png" />
@@ -788,7 +782,7 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-8 md:col-span-7 md:gap-12 lg:grid-cols-3">
                 <div className="space-y-4 md:space-y-6">
-                  <h5 className="text-[9px] font-black tracking-[0.3em] text-accent uppercase md:text-[10px]">
+                  <h5 className="text-[9px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
                     Discovery
                   </h5>
                   <ul className="space-y-3 text-xs font-medium md:space-y-4 md:text-sm">
@@ -827,7 +821,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="space-y-4 md:space-y-6">
-                  <h5 className="text-[9px] font-black tracking-[0.3em] text-accent uppercase md:text-[10px]">
+                  <h5 className="text-[9px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
                     Network
                   </h5>
                   <ul className="space-y-3 text-xs font-medium md:space-y-4 md:text-sm">
@@ -866,7 +860,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="col-span-2 space-y-4 md:space-y-6 lg:col-span-1">
-                  <h5 className="text-[9px] font-black tracking-[0.3em] text-accent uppercase md:text-[10px]">
+                  <h5 className="text-[9px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
                     Legal
                   </h5>
                   <ul className="space-y-3 text-xs font-medium md:space-y-4 md:text-sm">
