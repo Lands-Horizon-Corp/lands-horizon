@@ -17,7 +17,7 @@ import {
   Star,
   CameraIcon,
 } from "lucide-react"
-import { APP_NAME } from "@/constants"
+import { APP_NAME, LOGO } from "@/constants"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -32,7 +32,7 @@ export default function Home() {
         <div className="relative z-20 mx-auto flex max-w-360 items-center justify-between px-4 py-4 md:px-12 md:py-5">
           <div className="group flex cursor-pointer items-center gap-2">
             <div className="text-on-primary flex h-8 w-8 transform items-center justify-center rounded bg-primary font-black transition-transform group-hover:rotate-12">
-              <img src="/logo.webp" />
+              <img src={LOGO} />
             </div>
             <span className="font-headline text-lg font-extrabold tracking-tighter text-secondary md:text-xl">
               {APP_NAME}
@@ -749,7 +749,7 @@ export default function Home() {
               <div className="space-y-6 md:col-span-5 md:space-y-10">
                 <div className="flex items-center gap-2">
                   <div className="text-on-primary flex h-10 w-10 items-center justify-center rounded bg-primary font-black">
-                    <img src="/logo.webp" />
+                    <img src={LOGO} />
                   </div>
                   <span className="text-xl font-black tracking-tighter text-secondary uppercase md:text-2xl">
                     {APP_NAME}

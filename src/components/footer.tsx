@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/constants"
+import { APP_NAME, LOGO } from "@/constants"
 
 export function Footer() {
   return (
@@ -11,7 +11,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4 flex items-center gap-2">
-              <img src="/logo.webp" />
+              <img src={LOGO} />
               <span className="headline text-lg font-extrabold text-secondary">
                 {APP_NAME}
               </span>

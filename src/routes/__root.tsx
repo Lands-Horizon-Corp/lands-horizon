@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
 import { TanStackDevtools } from "@tanstack/react-devtools"
 
 import appCss from "../styles.css?url"
+import { APP_NAME, LOGO } from "@/constants"
 
 export const Route = createRootRoute({
   head: () => ({
@@ -15,13 +16,19 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "TanStack Start Starter",
+        title: APP_NAME,
       },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: LOGO,
       },
     ],
   }),
