@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, type Variants } from "framer-motion"
 import {
   Menu,
   ChevronRight,
@@ -19,12 +20,40 @@ import {
 } from "lucide-react"
 import { APP_NAME, EMAIL, LOGO } from "@/constants"
 
+// Animation Variants
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+
+const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen((data) => !data)
   }
+
   return (
     <>
       {/* Top Navigation Bar */}
@@ -32,7 +61,7 @@ export default function Home() {
         <div className="relative z-20 mx-auto flex max-w-360 items-center justify-between px-4 py-4 md:px-12 md:py-5">
           <div className="group flex cursor-pointer items-center gap-2">
             <div className="text-on-primary flex h-8 w-8 transform items-center justify-center rounded bg-primary font-black transition-transform group-hover:rotate-12">
-              <img src={LOGO} />
+              <img src={LOGO} alt="Logo" />
             </div>
             <span className="font-headline text-lg font-extrabold tracking-tighter text-secondary md:text-xl">
               {APP_NAME}
@@ -60,7 +89,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4 md:gap-6">
             <a
-              className="bg-surface-container-highest border-outline-variant/30 hidden rounded-lg border px-4 py-2.5 text-[10px] font-black tracking-widest text-secondary uppercase transition-all duration-300 hover:border-primary/60 sm:inline-flex md:px-6"
+              className="bg-surface-container-highest border-outline-variant/30 hidden rounded-lg border px-4 py-2.5 text-[10px] font-black tracking-widest text-secondary uppercase transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(var(--primary-rgb,233,196,0),0.3)] sm:inline-flex md:px-6"
               href="#contact"
             >
               Work With Us
@@ -106,10 +135,10 @@ export default function Home() {
                   key={i}
                   href={item.href}
                   onClick={toggleMenu}
-                  className="group border-outline-variant/10 bg-surface-container/60 hover:bg-surface-container flex items-center justify-between rounded-xl border px-5 py-4 text-base font-bold text-secondary transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 active:scale-[0.98]"
+                  className="group border-outline-variant/10 bg-surface-container/60 hover:bg-surface-container flex items-center justify-between rounded-xl border px-5 py-4 text-base font-bold text-secondary transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_0_20px_rgba(var(--primary-rgb,233,196,0),0.15)] active:scale-[0.98]"
                 >
                   <span>{item.label}</span>
-                  <ChevronRight className="opacity-40 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
+                  <ChevronRight className="opacity-40 transition-all group-hover:translate-x-1 group-hover:text-primary group-hover:opacity-100" />
                 </a>
               ))}
             </div>
@@ -119,7 +148,7 @@ export default function Home() {
               <a
                 href="#contact"
                 onClick={toggleMenu}
-                className="text-on-primary block w-full rounded-xl bg-primary py-4 text-center font-black tracking-widest uppercase shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="text-on-primary block w-full rounded-xl bg-primary py-4 text-center font-black tracking-widest uppercase shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(var(--primary-rgb,233,196,0),0.4)] active:scale-95"
               >
                 Work With Us
               </a>
@@ -174,17 +203,36 @@ export default function Home() {
 
             <div className="absolute bottom-0 left-0 h-64 w-full bg-linear-to-t from-background to-transparent"></div>
           </div>
-          <div className="relative z-10 max-w-6xl space-y-6 text-center md:space-y-10">
-            <div className="bg-primary-container/30 mb-4 inline-flex items-center gap-3 rounded-full border border-primary/20 px-4 py-1.5 text-[8px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+
+          <motion.div
+            className="relative z-10 max-w-6xl space-y-6 text-center md:space-y-10"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="bg-primary-container/30 mb-4 inline-flex items-center gap-3 rounded-full border border-primary/20 px-4 py-1.5 text-[8px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]"
+            >
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary shadow-[0_0_10px_currentColor]"></span>
               Built with Trust
-            </div>
-            <h1 className="animate-blur-shake font-headline text-4xl leading-[1.1] font-extrabold tracking-tighter text-secondary sm:text-6xl md:text-[90px] md:leading-[0.9] lg:text-[110px]">
+            </motion.div>
+
+            <motion.h1
+              variants={fadeInUp}
+              className="animate-blur-shake font-headline text-4xl leading-[1.1] font-extrabold tracking-tighter text-secondary sm:text-6xl md:text-[90px] md:leading-[0.9] lg:text-[110px]"
+            >
               Maximizing <span className="font-light italic">Reach.</span>
               <br />
-              <span className="text-gradient-gold">Multiplying Impact.</span>
-            </h1>
-            <div className="relative mx-auto h-4 w-full max-w-50 overflow-hidden md:h-6 md:max-w-md">
+              <span className="text-gradient-gold drop-shadow-[0_0_15px_rgba(233,196,0,0.3)]">
+                Multiplying Impact.
+              </span>
+            </motion.h1>
+
+            <motion.div
+              variants={fadeInUp}
+              className="relative mx-auto h-4 w-full max-w-50 overflow-hidden md:h-6 md:max-w-md"
+            >
               <svg
                 className="h-full w-full text-primary/40"
                 viewBox="0 0 400 20"
@@ -198,14 +246,22 @@ export default function Home() {
                   strokeWidth="1"
                 ></path>
               </svg>
-            </div>
-            <p className="text-on-surface-variant mx-auto max-w-3xl px-4 text-base leading-relaxed font-light tracking-wide md:text-2xl">
+            </motion.div>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-on-surface-variant mx-auto max-w-3xl px-4 text-base leading-relaxed font-light tracking-wide md:text-2xl"
+            >
               Bridging the gap between corporate structural integrity and
               bespoke digital storytelling for elite finance and tech sectors.
-            </p>
-            <div className="flex flex-col justify-center gap-4 px-4 pt-6 sm:flex-row md:gap-6 md:pt-10">
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col justify-center gap-4 px-4 pt-6 sm:flex-row md:gap-6 md:pt-10"
+            >
               <a
-                className="group text-on-primary relative overflow-hidden rounded-xl bg-primary px-8 py-4 font-bold tracking-tight transition-all hover:scale-105 active:scale-95 md:px-10 md:py-5"
+                className="group text-on-primary relative overflow-hidden rounded-xl bg-primary px-8 py-4 font-bold tracking-tight transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(var(--primary-rgb,233,196,0),0.4)] active:scale-95 md:px-10 md:py-5"
                 href="#services"
               >
                 <span className="relative z-10 flex items-center justify-center gap-3">
@@ -218,65 +274,67 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"></div>
               </a>
               <a
-                className="bg-surface-container-high border-outline-variant/20 text-on-surface hover:bg-surface-variant rounded-xl border px-8 py-4 text-center font-bold transition-colors md:px-10 md:py-5"
+                className="bg-surface-container-high border-outline-variant/20 text-on-surface hover:bg-surface-variant rounded-xl border px-8 py-4 text-center font-bold transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] md:px-10 md:py-5"
                 href="#mission-vision"
               >
                 Our Story
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* Trust Bar */}
-        <section className="relative overflow-hidden px-4 py-12">
+        <motion.section
+          className="relative overflow-hidden px-4 py-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
           <div className="mx-auto max-w-7xl">
             <div className="border-outline-variant/10 divide-outline-variant/10 flex flex-col items-center justify-between gap-8 divide-y py-10 md:flex-row md:gap-0 md:divide-x md:divide-y-0">
-              <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
-                <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  100K<span className="text-primary">+</span>
-                </span>
-                <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
-                  Global Users Served
-                </span>
-              </div>
-              <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
-                <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  100<span className="text-primary">+</span>
-                </span>
-                <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
-                  Strategic Partners
-                </span>
-              </div>
-              <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
-                <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  99.9<span className="text-primary">%</span>
-                </span>
-                <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
-                  System Reliability
-                </span>
-              </div>
-              <div className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0">
-                <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
-                  24<span className="text-primary">/</span>7
-                </span>
-                <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
-                  Priority Concierge
-                </span>
-              </div>
+              {[
+                { number: "100K", symbol: "+", label: "Global Users Served" },
+                { number: "100", symbol: "+", label: "Strategic Partners" },
+                { number: "99.9", symbol: "%", label: "System Reliability" },
+                { number: "24", symbol: "/7", label: "Priority Concierge" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeInUp}
+                  className="flex w-full flex-col items-center py-4 text-center md:w-auto md:flex-1 md:px-6 md:py-0"
+                >
+                  <span className="font-headline text-2xl font-black text-secondary md:text-3xl">
+                    {stat.number}
+                    <span className="text-primary drop-shadow-[0_0_8px_currentColor]">
+                      {stat.symbol}
+                    </span>
+                  </span>
+                  <span className="text-on-surface-variant/60 mt-2 text-[9px] font-bold tracking-[0.2em] uppercase md:text-[10px]">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Mission & Vision Section */}
         <section
-          className="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 md:px-8 md:py-32"
+          className="mx-auto max-w-7xl scroll-mt-20 overflow-hidden px-6 py-20 md:px-8 md:py-32"
           id="mission-vision"
         >
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-24">
-            <div className="space-y-10 md:space-y-16 lg:col-span-7">
+            <motion.div
+              className="space-y-10 md:space-y-16 lg:col-span-7"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={slideInLeft}
+            >
               <div className="space-y-4 md:space-y-6">
                 <div className="flex items-center gap-4">
-                  <span className="h-px w-8 bg-primary md:w-12"></span>
+                  <span className="h-px w-8 bg-primary shadow-[0_0_8px_currentColor] md:w-12"></span>
                   <span className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase md:text-xs">
                     Our Core Purpose
                   </span>
@@ -284,17 +342,23 @@ export default function Home() {
                 <h2 className="font-headline text-4xl leading-[1.1] font-extrabold tracking-tighter text-secondary md:text-6xl lg:text-7xl">
                   Driven by{" "}
                   <span className="text-on-surface-variant">Precision</span>,
-                  Guided by <span className="font-light italic">Values.</span>
+                  Guided by{" "}
+                  <span className="text-gradient-gold font-light italic drop-shadow-[0_0_10px_rgba(233,196,0,0.2)]">
+                    Values.
+                  </span>
                 </h2>
               </div>
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10">
                 <div className="group">
                   <div className="mb-6 flex items-center justify-between">
-                    <span className="text-4xl font-black text-primary/20 transition-colors group-hover:text-primary/40">
+                    <span className="text-4xl font-black text-primary/20 transition-colors group-hover:text-primary/40 group-hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]">
                       01
                     </span>
-                    <div className="border-outline-variant/20 flex h-10 w-10 items-center justify-center rounded-full border">
-                      <Zap size={18} className="text-primary" />
+                    <div className="border-outline-variant/20 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]">
+                      <Zap
+                        size={18}
+                        className="text-primary transition-transform group-hover:scale-110"
+                      />
                     </div>
                   </div>
                   <h4 className="mb-3 text-[10px] font-bold tracking-widest text-secondary uppercase md:mb-4 md:text-xs">
@@ -308,11 +372,14 @@ export default function Home() {
                 </div>
                 <div className="group">
                   <div className="mb-6 flex items-center justify-between">
-                    <span className="text-4xl font-black text-primary/20 transition-colors group-hover:text-primary/40">
+                    <span className="text-4xl font-black text-primary/20 transition-colors group-hover:text-primary/40 group-hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]">
                       02
                     </span>
-                    <div className="border-outline-variant/20 flex h-10 w-10 items-center justify-center rounded-full border">
-                      <TrendingUp size={18} className="text-primary" />
+                    <div className="border-outline-variant/20 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]">
+                      <TrendingUp
+                        size={18}
+                        className="text-primary transition-transform group-hover:scale-110"
+                      />
                     </div>
                   </div>
                   <h4 className="mb-3 text-[10px] font-bold tracking-widest text-secondary uppercase md:mb-4 md:text-xs">
@@ -325,18 +392,25 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="group relative lg:col-span-5">
-              <div className="from-primary-container/20 absolute -inset-4 rounded-4xl bg-linear-to-tr to-primary/5 opacity-60 blur-2xl transition-opacity group-hover:opacity-100"></div>
-              <div className="border-outline-variant/10 relative aspect-4/5 overflow-hidden rounded-3xl border shadow-2xl md:aspect-4/5">
+            </motion.div>
+
+            <motion.div
+              className="group relative lg:col-span-5"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={slideInRight}
+            >
+              <div className="from-primary-container/40 absolute -inset-4 rounded-4xl bg-linear-to-tr to-primary/10 opacity-60 blur-2xl transition-all duration-500 group-hover:opacity-100 group-hover:blur-3xl"></div>
+              <div className="border-outline-variant/10 relative aspect-4/5 overflow-hidden rounded-3xl border shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] md:aspect-4/5">
                 <img
                   src="meeting.jpg"
                   className="absolute top-0 left-0 -z-10 h-full mask-[linear-gradient(to_top_right,black,transparent)] object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent opacity-80"></div>
-                <div className="glass-header absolute right-6 bottom-6 left-6 rounded-2xl border border-primary/20 p-6 md:right-8 md:bottom-8 md:left-8 md:p-8">
+                <div className="glass-header absolute right-6 bottom-6 left-6 rounded-2xl border border-primary/20 p-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-md md:right-8 md:bottom-8 md:left-8 md:p-8">
                   <div className="flex flex-col gap-1">
-                    <p className="mb-1 text-[8px] font-black tracking-[0.3em] text-primary uppercase md:text-[10px]">
+                    <p className="mb-1 text-[8px] font-black tracking-[0.3em] text-primary uppercase drop-shadow-[0_0_5px_rgba(var(--primary-rgb),0.5)] md:text-[10px]">
                       Impact Record
                     </p>
                     <p className="font-headline text-2xl font-black text-secondary md:text-3xl">
@@ -349,7 +423,7 @@ export default function Home() {
                 </div>
               </div>
               <svg
-                className="absolute -top-4 -right-4 h-16 w-16 text-primary/30 md:-top-6 md:-right-6 md:h-24 md:w-24"
+                className="absolute -top-4 -right-4 h-16 w-16 text-primary/30 transition-all duration-500 group-hover:text-primary/60 group-hover:drop-shadow-[0_0_10px_currentColor] md:-top-6 md:-right-6 md:h-24 md:w-24"
                 viewBox="0 0 100 100"
               >
                 <path
@@ -360,7 +434,7 @@ export default function Home() {
                   strokeWidth="1.5"
                 ></path>
               </svg>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -370,7 +444,13 @@ export default function Home() {
           id="services"
         >
           <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-            <div className="mb-12 flex flex-col items-start justify-between gap-8 md:mb-20 lg:flex-row lg:items-end">
+            <motion.div
+              className="mb-12 flex flex-col items-start justify-between gap-8 md:mb-20 lg:flex-row lg:items-end"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+            >
               <div className="max-w-2xl space-y-4 md:space-y-6">
                 <h2 className="font-headline text-3xl font-extrabold tracking-tighter text-secondary md:text-6xl">
                   The Services Suite
@@ -383,20 +463,35 @@ export default function Home() {
               <div className="flex items-center gap-4 border-b border-primary/30 pb-2 text-[10px] font-bold tracking-[0.4em] text-primary uppercase md:text-xs">
                 01 // Ecosystem Offerings
               </div>
-            </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 gap-6 md:grid-cols-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+            >
               {/* Large Card 1 */}
-              <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-primary/40 md:col-span-7 md:p-10">
+              <motion.div
+                variants={fadeInUp}
+                className="group bg-surface-container border-outline-variant/10 card-reveal hover:bg-surface-container/80 relative z-10 overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:z-20 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_0_40px_-10px_rgba(var(--primary-rgb,233,196,0),0.3)] md:col-span-7 md:p-10"
+              >
                 <img
                   src="computer.jpg"
-                  className="absolute top-0 left-0 -z-10 mask-[linear-gradient(to_top_right,black,transparent)] opacity-20"
+                  className="absolute top-0 left-0 -z-10 mask-[linear-gradient(to_top_right,black,transparent)] opacity-20 transition-opacity duration-500 group-hover:opacity-30"
                 />
+                <div className="absolute inset-0 -z-10 bg-radial-[at_100%_0%] from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="mb-8 flex items-start justify-between md:mb-12">
-                    <div className="bg-primary-container flex h-14 w-14 items-center justify-center rounded-xl border border-primary/20 md:h-16 md:w-16">
-                      <TrendingUp size={28} className="text-primary" />
+                    <div className="bg-primary-container flex h-14 w-14 items-center justify-center rounded-xl border border-primary/20 transition-all duration-500 group-hover:border-primary/50 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(var(--primary-rgb,233,196,0),0.4)] md:h-16 md:w-16">
+                      <TrendingUp
+                        size={28}
+                        className="text-primary transition-transform duration-300 group-hover:scale-110"
+                      />
                     </div>
-                    <span className="text-on-surface-variant/5 text-4xl font-black md:text-6xl">
+                    <span className="text-on-surface-variant/5 text-4xl font-black transition-colors duration-500 group-hover:text-primary/10 group-hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.2)] md:text-6xl">
                       01
                     </span>
                   </div>
@@ -410,28 +505,36 @@ export default function Home() {
                     circuit-trace reliability for high-volume transactions.
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2 md:gap-3">
-                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase md:px-4 md:text-[10px]">
+                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase transition-colors duration-300 group-hover:border-primary/30 md:px-4 md:text-[10px]">
                       FinTech
                     </span>
-                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase md:px-4 md:text-[10px]">
+                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase transition-colors duration-300 group-hover:border-primary/30 md:px-4 md:text-[10px]">
                       Secure Infra
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Large Card 2 */}
-              <div className="group bg-surface-container border-outline-variant/10 card-reveal relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:border-primary/40 md:col-span-5 md:p-10">
+              <motion.div
+                variants={fadeInUp}
+                className="group bg-surface-container border-outline-variant/10 card-reveal hover:bg-surface-container/80 relative z-10 overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:z-20 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_0_40px_-10px_rgba(var(--primary-rgb,233,196,0),0.3)] md:col-span-5 md:p-10"
+              >
                 <img
                   src="multimedia.jpg"
-                  className="absolute top-0 left-0 -z-10 h-full w-full mask-[linear-gradient(to_top_right,black,transparent)] object-cover object-top opacity-20"
+                  className="absolute top-0 left-0 -z-10 h-full w-full mask-[linear-gradient(to_top_right,black,transparent)] object-cover object-top opacity-20 transition-opacity duration-500 group-hover:opacity-30"
                 />
+                <div className="absolute inset-0 -z-10 bg-radial-[at_100%_0%] from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="mb-8 flex items-start justify-between md:mb-12">
-                    <div className="bg-surface-container-highest border-outline-variant/20 flex h-14 w-14 items-center justify-center rounded-xl border md:h-16 md:w-16">
-                      <CameraIcon size={28} className="text-secondary" />
+                    <div className="bg-surface-container-highest border-outline-variant/20 flex h-14 w-14 items-center justify-center rounded-xl border transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] md:h-16 md:w-16">
+                      <CameraIcon
+                        size={28}
+                        className="text-secondary transition-transform duration-300 group-hover:scale-110 group-hover:text-primary"
+                      />
                     </div>
-                    <span className="text-on-surface-variant/5 text-4xl font-black md:text-6xl">
+                    <span className="text-on-surface-variant/5 text-4xl font-black transition-colors duration-500 group-hover:text-primary/10 group-hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.2)] md:text-6xl">
                       02
                     </span>
                   </div>
@@ -444,21 +547,24 @@ export default function Home() {
                     post-production.
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2 md:gap-3">
-                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase md:px-4 md:text-[10px]">
+                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase transition-colors duration-300 group-hover:border-primary/30 md:px-4 md:text-[10px]">
                       Cinematics
                     </span>
-                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase md:px-4 md:text-[10px]">
+                    <span className="bg-surface-variant border-outline-variant/20 rounded-full border px-3 py-1.5 text-[8px] font-bold tracking-widest text-secondary uppercase transition-colors duration-300 group-hover:border-primary/30 md:px-4 md:text-[10px]">
                       Post-Pro
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Three Small Cards */}
-              <div className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container rounded-2xl border p-6 transition-all duration-300 md:col-span-4 md:p-8 md:hover:-translate-y-2">
+              <motion.div
+                variants={fadeInUp}
+                className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container relative z-10 rounded-2xl border p-6 transition-all duration-300 hover:z-20 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb,233,196,0),0.25)] md:col-span-4 md:p-8"
+              >
                 <Search
                   size={32}
-                  className="mb-6 block scale-110 text-primary md:scale-125"
+                  className="mb-6 block scale-110 text-primary transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_12px_currentColor] md:scale-125"
                 />
                 <h4 className="mb-3 text-lg font-bold text-secondary">
                   SEO &amp; SEM Authority
@@ -467,11 +573,15 @@ export default function Home() {
                   Algorithmic precision to ensure your brand remains at the
                   pinnacle of digital visibility.
                 </p>
-              </div>
-              <div className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container rounded-2xl border p-6 transition-all duration-300 md:col-span-4 md:p-8 md:hover:-translate-y-2">
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container relative z-10 rounded-2xl border p-6 transition-all duration-300 hover:z-20 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb,233,196,0),0.25)] md:col-span-4 md:p-8"
+              >
                 <Globe
                   size={32}
-                  className="mb-6 block scale-110 text-primary md:scale-125"
+                  className="mb-6 block scale-110 text-primary transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_12px_currentColor] md:scale-125"
                 />
                 <h4 className="mb-3 text-lg font-bold text-secondary">
                   Omnichannel Strategy
@@ -480,11 +590,15 @@ export default function Home() {
                   Cohesive narrative unification across all digital touchpoints
                   and customer journeys.
                 </p>
-              </div>
-              <div className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container rounded-2xl border p-6 transition-all duration-300 md:col-span-4 md:p-8 md:hover:-translate-y-2">
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="bg-surface-container/50 border-outline-variant/10 group hover:bg-surface-container relative z-10 rounded-2xl border p-6 transition-all duration-300 hover:z-20 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb,233,196,0),0.25)] md:col-span-4 md:p-8"
+              >
                 <Zap
                   size={32}
-                  className="mb-6 block scale-110 text-primary md:scale-125"
+                  className="mb-6 block scale-110 text-primary transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_12px_currentColor] md:scale-125"
                 />
                 <h4 className="mb-3 text-lg font-bold text-secondary">
                   24/7 Concierge Support
@@ -493,9 +607,10 @@ export default function Home() {
                   Elite technical stewardship providing round-the-clock
                   maintenance and proactive optimization.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
+
           {/* Animated Background Line */}
           <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden opacity-20">
             <svg
@@ -521,7 +636,13 @@ export default function Home() {
           id="why-us"
         >
           <div className="mx-auto max-w-7xl">
-            <div className="mb-16 space-y-4 text-center md:mb-24 md:space-y-6">
+            <motion.div
+              className="mb-16 space-y-4 text-center md:mb-24 md:space-y-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+            >
               <div className="flex items-center justify-center gap-4">
                 <span className="bg-outline-variant/30 h-px w-6 md:w-8"></span>
                 <span className="text-[8px] font-black tracking-[0.5em] text-primary uppercase md:text-[10px]">
@@ -532,10 +653,20 @@ export default function Home() {
               <h2 className="font-headline text-3xl font-extrabold tracking-tighter text-secondary md:text-6xl">
                 Why {APP_NAME}?
               </h2>
-            </div>
-            <div className="border-outline-variant/10 bg-surface-container-low grid grid-cols-1 gap-0 overflow-hidden rounded-3xl border shadow-xl md:grid-cols-3 md:rounded-[2.5rem]">
-              <div className="border-outline-variant/10 hover:bg-primary-container/10 group border-b p-8 transition-colors md:border-r md:border-b-0 md:p-12">
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-transform group-hover:scale-110 md:mb-10">
+            </motion.div>
+
+            <motion.div
+              className="border-outline-variant/10 bg-surface-container-low grid grid-cols-1 gap-0 overflow-hidden rounded-3xl border shadow-xl md:grid-cols-3 md:rounded-[2.5rem]"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+            >
+              <motion.div
+                variants={fadeInUp}
+                className="border-outline-variant/10 hover:bg-primary-container/10 group border-b p-8 transition-colors md:border-r md:border-b-0 md:p-12"
+              >
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(var(--primary-rgb,233,196,0),0.3)] md:mb-10">
                   <BarChart3 size={24} />
                 </div>
                 <h4 className="mb-4 text-lg leading-tight font-extrabold text-secondary md:text-xl">
@@ -546,9 +677,12 @@ export default function Home() {
                   data-driven intelligence ensures your brand commands
                   attention.
                 </p>
-              </div>
-              <div className="border-outline-variant/10 hover:bg-primary-container/10 group border-b p-8 transition-colors md:border-r md:border-b-0 md:p-12">
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-transform group-hover:scale-110 md:mb-10">
+              </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                className="border-outline-variant/10 hover:bg-primary-container/10 group border-b p-8 transition-colors md:border-r md:border-b-0 md:p-12"
+              >
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(var(--primary-rgb,233,196,0),0.3)] md:mb-10">
                   <Code size={24} />
                 </div>
                 <h4 className="mb-4 text-lg leading-tight font-extrabold text-secondary md:text-xl">
@@ -558,9 +692,12 @@ export default function Home() {
                   High-speed architecture and robust stability. We engineer for
                   peak performance under extreme operational pressure.
                 </p>
-              </div>
-              <div className="hover:bg-primary-container/10 group p-8 transition-colors md:p-12">
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-transform group-hover:scale-110 md:mb-10">
+              </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                className="hover:bg-primary-container/10 group p-8 transition-colors md:p-12"
+              >
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg border border-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(var(--primary-rgb,233,196,0),0.3)] md:mb-10">
                   <RefreshCw size={24} />
                 </div>
                 <h4 className="mb-4 text-lg leading-tight font-extrabold text-secondary md:text-xl">
@@ -570,8 +707,8 @@ export default function Home() {
                   Beyond the launch, we provide continuous optimization ensuring
                   your technology stack evolves ahead of market demands.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
@@ -581,7 +718,13 @@ export default function Home() {
           id="testimonials"
         >
           <div className="mx-auto max-w-7xl px-6 md:px-8">
-            <div className="mb-16 max-w-2xl space-y-4 md:mb-24 md:space-y-6">
+            <motion.div
+              className="mb-16 max-w-2xl space-y-4 md:mb-24 md:space-y-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+            >
               <div className="flex items-center gap-4">
                 <span className="h-px w-10 bg-primary md:w-12"></span>
                 <span className="font-bold tracking-[0.4em] text-primary uppercase md:text-xs">
@@ -595,23 +738,32 @@ export default function Home() {
                 Our team has a successful track record of helping brands scale
                 profitably based on high-performing strategies.
               </p>
-            </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+            >
               {[
                 { initials: "MT", name: "Melvin Thomas", age: "34" },
                 { initials: "SS", name: "Sreenath.S", age: "26" },
                 { initials: "MD", name: "Marvin D'z", age: "46" },
               ].map((testimonial, idx) => (
-                <div
+                <motion.div
                   key={idx}
-                  className="bg-surface-container-high border-outline-variant/10 flex flex-col rounded-2xl border p-8 md:p-10"
+                  variants={fadeInUp}
+                  className="bg-surface-container-high border-outline-variant/10 group flex flex-col rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb,233,196,0),0.15)] md:p-10"
                 >
                   <div className="mb-6 flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         size={16}
-                        className="fill-primary text-primary"
+                        className="fill-primary text-primary transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_5px_currentColor]"
+                        style={{ transitionDelay: `${i * 50}ms` }}
                       />
                     ))}
                   </div>
@@ -620,7 +772,7 @@ export default function Home() {
                     business grow in digital."
                   </p>
                   <div className="mt-auto flex items-center gap-4">
-                    <div className="bg-surface-variant flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold text-primary md:h-12 md:w-12">
+                    <div className="bg-surface-variant flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold text-primary transition-colors duration-300 group-hover:bg-primary/20 md:h-12 md:w-12">
                       {testimonial.initials}
                     </div>
                     <div>
@@ -632,9 +784,9 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -645,7 +797,14 @@ export default function Home() {
         >
           <div className="border-outline-variant/10 bordershadow-2xl relative grid grid-cols-1 overflow-hidden rounded-3xl md:rounded-4xl lg:grid-cols-2">
             <div className="pointer-events-none absolute inset-0"></div>
-            <div className="bg-surface-container-low/40 relative z-10 space-y-10 p-8 backdrop-blur-sm md:space-y-12 md:p-12 lg:p-20">
+
+            <motion.div
+              className="bg-surface-container-low/40 relative z-10 space-y-10 p-8 backdrop-blur-sm md:space-y-12 md:p-12 lg:p-20"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={slideInLeft}
+            >
               <div className="space-y-4 md:space-y-6">
                 <h2 className="font-headline text-3xl leading-tight font-extrabold tracking-tighter text-secondary md:text-5xl">
                   Start Your
@@ -659,7 +818,7 @@ export default function Home() {
               </div>
               <div className="space-y-6 md:space-y-8">
                 <div className="group flex items-center gap-4 md:gap-6">
-                  <div className="group-hover:text-on-primary flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 text-primary transition-all group-hover:bg-primary md:h-12 md:w-12">
+                  <div className="group-hover:text-on-primary flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] md:h-12 md:w-12">
                     <Mail size={20} />
                   </div>
                   <div className="flex flex-col">
@@ -672,7 +831,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="group flex items-center gap-4 md:gap-6">
-                  <div className="group-hover:text-on-primary flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 text-primary transition-all group-hover:bg-primary md:h-12 md:w-12">
+                  <div className="group-hover:text-on-primary flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] md:h-12 md:w-12">
                     <Globe size={20} />
                   </div>
                   <div className="flex flex-col">
@@ -685,8 +844,15 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="border-outline-variant/10 relative z-10 border-t p-8 md:p-12 lg:border-t-0 lg:border-l lg:p-20">
+            </motion.div>
+
+            <motion.div
+              className="border-outline-variant/10 relative z-10 border-t p-8 md:p-12 lg:border-t-0 lg:border-l lg:p-20"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={slideInRight}
+            >
               <form
                 className="space-y-6 md:space-y-8"
                 onSubmit={(e) => e.preventDefault()}
@@ -697,7 +863,7 @@ export default function Home() {
                       Legal Name
                     </label>
                     <input
-                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
+                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(var(--primary-rgb,233,196,0),0.15)] focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                       placeholder="John Doe"
                       type="text"
                     />
@@ -707,7 +873,7 @@ export default function Home() {
                       Enterprise Email
                     </label>
                     <input
-                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
+                      className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(var(--primary-rgb,233,196,0),0.15)] focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                       placeholder="john@example.com"
                       type="email"
                     />
@@ -718,7 +884,7 @@ export default function Home() {
                     Engagement Subject
                   </label>
                   <input
-                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
+                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 w-full rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(var(--primary-rgb,233,196,0),0.15)] focus:ring-1 focus:ring-primary/20 md:px-6 md:py-4"
                     placeholder="How can we help?"
                     type="text"
                   />
@@ -728,28 +894,37 @@ export default function Home() {
                     Brief Vision Message
                   </label>
                   <textarea
-                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 h-32 w-full resize-none rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 md:h-40 md:px-6 md:py-4"
+                    className="bg-surface-container-lowest/30 border-outline-variant/20 placeholder:text-on-surface-variant/30 h-32 w-full resize-none rounded-xl border px-4 py-3 text-secondary transition-all outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(var(--primary-rgb,233,196,0),0.15)] focus:ring-1 focus:ring-primary/20 md:h-40 md:px-6 md:py-4"
                     placeholder="Tell us more about your requirements..."
                   ></textarea>
                 </div>
-                <button className="text-on-primary luminous-glow flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 md:py-5">
+                <button className="group text-on-primary luminous-glow flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(var(--primary-rgb,233,196,0),0.4)] active:scale-95 md:py-5">
                   <span>Send Inquiry</span>
-                  <Send size={16} />
+                  <Send
+                    size={16}
+                    className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
                 </button>
               </form>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="bg-surface-container-lowest text-on-surface border-outline-variant/10 font-body relative w-full overflow-hidden border-t px-6 pt-20 pb-12 md:px-10 md:pt-32 md:pb-16">
+        <motion.footer
+          className="bg-surface-container-lowest text-on-surface border-outline-variant/10 font-body relative w-full overflow-hidden border-t px-6 pt-20 pb-12 md:px-10 md:pt-32 md:pb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className="relative z-10 mx-auto max-w-7xl">
             <div className="mb-16 grid grid-cols-1 gap-12 md:mb-24 md:grid-cols-12 md:gap-16">
               {/* Brand Section */}
               <div className="space-y-6 md:col-span-5 md:space-y-10">
                 <div className="flex items-center gap-2">
                   <div className="text-on-primary flex h-10 w-10 items-center justify-center rounded bg-primary font-black">
-                    <img src={LOGO} />
+                    <img src={LOGO} alt="Logo" />
                   </div>
                   <span className="text-xl font-black tracking-tighter text-secondary uppercase md:text-2xl">
                     {APP_NAME}
@@ -761,22 +936,22 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-start gap-4 md:gap-6">
                   <a
-                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:text-primary"
+                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:scale-110 hover:text-primary hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]"
                     href="#"
                   >
-                    <img src="/bir.png" />
+                    <img src="/bir.png" alt="BIR" />
                   </a>
                   <a
-                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:text-primary"
+                    className="flex h-10 w-10 items-center justify-center transition-all duration-300 hover:scale-110 hover:text-primary hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]"
                     href="#"
                   >
-                    <img src="/dti.png" />
+                    <img src="/dti.png" alt="DTI" />
                   </a>
                   <a
-                    className="flex h-5 w-15 items-center justify-center transition-all duration-300 hover:text-primary"
+                    className="flex h-5 w-15 items-center justify-center transition-all duration-300 hover:scale-110 hover:text-primary hover:drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]"
                     href="#"
                   >
-                    <img src="/sec.png" />
+                    <img src="/sec.png" alt="SEC" />
                   </a>
                 </div>
               </div>
@@ -789,7 +964,7 @@ export default function Home() {
                   <ul className="space-y-3 text-xs font-medium md:space-y-4 md:text-sm">
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#mission-vision"
                       >
                         Our Narrative
@@ -797,7 +972,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#why-us"
                       >
                         The Edge
@@ -805,7 +980,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#services"
                       >
                         The Suite
@@ -813,7 +988,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#contact"
                       >
                         Concierge
@@ -828,7 +1003,7 @@ export default function Home() {
                   <ul className="space-y-3 text-xs font-medium md:space-y-4 md:text-sm">
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#"
                       >
                         LinkedIn
@@ -836,7 +1011,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#"
                       >
                         Upwork Elite
@@ -844,7 +1019,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#"
                       >
                         Instagram
@@ -852,7 +1027,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="#"
                       >
                         Behance
@@ -867,7 +1042,7 @@ export default function Home() {
                   <ul className="space-y-3 text-xs font-medium md:space-y-4 md:text-sm">
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="/privacy-policy"
                       >
                         Privacy Policy
@@ -875,7 +1050,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="/service-terms"
                       >
                         Service Terms
@@ -883,7 +1058,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="/cookie-policy"
                       >
                         Cookie Policy
@@ -891,7 +1066,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="text-on-surface-variant/60 transition-colors hover:text-secondary"
+                        className="text-on-surface-variant/60 transition-colors hover:text-secondary hover:drop-shadow-[0_0_5px_currentColor]"
                         href="/faq"
                       >
                         FAQ
@@ -912,7 +1087,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </footer>
+        </motion.footer>
       </main>
     </>
   )
